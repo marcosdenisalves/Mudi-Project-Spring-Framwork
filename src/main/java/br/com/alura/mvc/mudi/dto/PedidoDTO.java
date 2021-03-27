@@ -1,18 +1,25 @@
 package br.com.alura.mvc.mudi.dto;
 
+import javax.validation.constraints.NotBlank;
+
 import br.com.alura.mvc.mudi.model.Pedido;
 
-public class RequisicaoNovoPedido {
+public class PedidoDTO {
 
+	@NotBlank
 	private String nomeProduto;
+
+	@NotBlank
 	private String urlProduto;
+	
+	@NotBlank
 	private String urlImagem;
 	private String descricao;
 
-	public RequisicaoNovoPedido() {
+	public PedidoDTO() {
 	}
 
-	public RequisicaoNovoPedido(String nomeProduto, String urlProduto, String urlImagem, String descricao) {
+	public PedidoDTO(String nomeProduto, String urlProduto, String urlImagem, String descricao) {
 		this.nomeProduto = nomeProduto;
 		this.urlProduto = urlProduto;
 		this.urlImagem = urlImagem;
