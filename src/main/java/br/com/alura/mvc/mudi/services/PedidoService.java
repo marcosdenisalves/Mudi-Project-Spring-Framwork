@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.alura.mvc.mudi.model.Pedido;
+import br.com.alura.mvc.mudi.model.enums.StatusPedido;
 import br.com.alura.mvc.mudi.repositories.PedidoRepository;
 
 @Service
@@ -16,5 +17,9 @@ public class PedidoService {
 	
 	public List<Pedido> findAll() {
 		return pedidoRepository.findAll();
+	}
+
+	public List<Pedido> findByStatus(StatusPedido aguardando) {
+		return pedidoRepository.findByStatus(aguardando);
 	}
 }
