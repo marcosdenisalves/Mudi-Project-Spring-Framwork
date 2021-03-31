@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.alura.mvc.mudi.dto.PedidoDTO;
 import br.com.alura.mvc.mudi.model.Pedido;
-import br.com.alura.mvc.mudi.repositories.PedidoRepository;
+import br.com.alura.mvc.mudi.services.PedidoService;
 
 @Controller
 @RequestMapping("pedido")
 public class PedidoController {
 
 	@Autowired
-	private PedidoRepository repository;
+	private PedidoService service;
 	
 	@GetMapping("formulario")
 	public String formulario(PedidoDTO requisicao) {
@@ -32,7 +32,7 @@ public class PedidoController {
 		}
 		
 		Pedido pedido = requisicao.toPedido();
-		repository.save(pedido);
+		service.save(pedido);
 		return "redirect:/home";
 	}
 }
