@@ -3,6 +3,7 @@ package br.com.alura.mvc.mudi.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +21,8 @@ public class PedidoService {
 		return pedidoRepository.findAll();
 	}
 
-	public List<Pedido> findByStatus(StatusPedido aguardando) {
-		return pedidoRepository.findByStatus(aguardando);
+	public List<Pedido> findByStatus(StatusPedido status, PageRequest page) {
+		return pedidoRepository.findByStatus(status, page);
 	}
 
 	public List<Pedido> findAllByUsuario(String username) {
@@ -33,5 +34,9 @@ public class PedidoService {
 				getContext().getAuthentication().getName());
 		
 		pedidoRepository.save(pedido);
+	}
+
+	public List<Pedido> findByStatusAndUser(StatusPedido status, String name) {
+		return pedidoRepository.findByStatusAndUser(status, name);
 	}
 }
